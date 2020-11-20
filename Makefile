@@ -1,20 +1,19 @@
-COMPILE = g++ -std=c++11 -Wall -c
+COMPILE	= g++ -std=c++11 -Wall -c
 LINK = g++ -std=c++11 -Wall -o
 
-all             :       Game
+all		:	Game
 
-Game            :       Game.o header.o
-                $(LINK) Game Game.o header.o -g
+Game		:	Game.o header.o
+		$(LINK) Game Game.o header.o -g
 
-Game.o          :       Game.cpp
-                $(COMPILE) -cpp Game.cpp
+Game.o		:	Game.cpp
+		$(COMPILE) -cpp Game.cpp
 
-header.o        :       header.cpp
-                $(COMPILE) -cpp header.cpp
+header.o	:	header.cpp
+		$(COMPILE) -cpp header.cpp
 
-clean           :
-                rm -rf *.o Game
+clean		:
+		rm -rf *.o Game 
 
-format          :
-                clang-format -i -style=file *.cpp *.h
-
+format		:
+		clang-format -i -style=file *.cpp *.h
