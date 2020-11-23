@@ -12,3 +12,8 @@ void play::table() {
     cout << "\n";
   }
 }
+
+int play::playing() {
+  int turn = rand() % 2;
+  
+}

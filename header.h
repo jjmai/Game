@@ -7,6 +7,7 @@ public:
   void table();
   void player1();
   void player2();
+  int playing();
 };
 
 #endif
