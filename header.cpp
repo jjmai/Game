@@ -1,6 +1,7 @@
 #include "header.h"
+#include <cmath>
 #include <iostream>
-
+#include <string>
 using namespace std;
 
 void play::table() {
@@ -15,5 +16,36 @@ void play::table() {
 
 int play::playing() {
   int turn = rand() % 2;
-  
+  int p1;
+  int p2;
+
+  if (turn == 0) {
+    cout << "Enter a Valid Position on The graph. You are 'X'\n\n";
+
+    cin >> p1;
+    cout << "\n\n";
+
+    if (p1 > 0 && p1 <= 9) {
+      while (true) {
+        p2 = rand() % 9 + 1;
+        if (p2 != p1) {
+          break;
+        }
+      }
+      for (int i = 1; i < 10; i++) {
+        if (p1 == i) {
+          cout << "X ";
+        } else if (p2 == i) {
+          cout << "O ";
+        } else {
+          cout << "-" << " ";
+        }
+        if (i > 0 && i % 3 == 0) {
+          cout << "\n";
+        }
+      }
+    }
+  }
+  cout << "\n";
+  return 1;
 }
