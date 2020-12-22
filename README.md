@@ -1,7 +1,7 @@
 #---------------------------------------------------
-Jordan Mai
-Tic-Tac-Toe Game
-README.md
+# Jordan Mai
+# Tic-Tac-Toe Game
+# README.md
 #--------------------------------------------------
 
 Follow instructions to play the game.
