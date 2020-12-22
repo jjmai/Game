@@ -7,6 +7,7 @@
 
 #define PLAYER_TURN 0
 #define BOT_TURN 1
+// int steps =0;
 using namespace std;
 
 void play::table() {
@@ -17,6 +18,8 @@ void play::table() {
     }
     cout << "\n\n";
   }
+  cout << "---------------------------------------------------------------\n"
+       << "\n";
 }
 
 int play::playing() {
@@ -24,17 +27,27 @@ int play::playing() {
   int turn = rand() % 2;
   int number = 0, x = 0, y = 0;
   char board[3][3];
+  // instructions(steps);
   initialize(board);
   if (turn == 0) {
+    cout << "Pick a Number\n";
     print_board(board);
   }
   while (true) {
     if (turn == PLAYER_TURN) {
-      cout << "You Picked Position ";
-      cin >> number;
-      cout << "\n";
-      x = number / 3;
-      y = number % 3;
+      while (true) {
+        cout << "You Picked Position: ";
+        cin >> number;
+        cout << "\n";
+        x = number / 3;
+        y = number % 3;
+        if (board[x][y] != '-') {
+          cout << "Spot Taken. Please Choose an available Position!\n\n";
+          print_board(board);
+        } else {
+          break;
+        }
+      }
       board[x][y] = 'X';
       turn = BOT_TURN;
     } else {
@@ -52,7 +65,7 @@ int play::playing() {
       break;
     }
   }
-  // cout << "DONE";
+  return 1;
 }
 
 void play::bot(char board[][3]) {
@@ -63,7 +76,8 @@ void play::bot(char board[][3]) {
     y = rand() % 9;
     if (board[x][y] == '-') {
       board[x][y] = 'O';
-      cout << "Bot Chose Position " << (x * 3) + y % 9 << "\n";
+      cout << "Bot Chose Position " << (x * 3) + y % 9
+           << ". Your Turn to Pick a Number!\n\n";
       break;
     }
   }
@@ -90,8 +104,11 @@ bool play::check(char board[][3]) {
   return false;
 }
 
-void play::instructions() { 
-
+void play::instructions(int steps) {
+  cout << "This is the Tic-Tac-Toe Board. The Numbers Indicate the position "
+          "\n"
+       << "-------------------------------------------------------------\n"
+       << "\n";
 }
 
 void play::initialize(char board[][3]) {
@@ -107,6 +124,6 @@ void play::print_board(char board[][3]) {
     for (int j = 0; j < 3; j++) {
       cout << board[i][j] << " ";
     }
-    cout << "\n\n\n";
+    cout << "\n\n";
   }
 }

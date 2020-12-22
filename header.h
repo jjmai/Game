@@ -10,7 +10,7 @@ public:
   int playing();
   void bot(char board[][3]);
   bool check(char board[][3]);
-  void instructions();
+  void instructions(int steps);
   void initialize(char board[][3]);
   void print_board(char bpard[][3]);
 };
